@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Useless Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="calculator">
+            <div class="progress-container">
+                <div class="progress-bar" id="progress-bar"></div>
+            </div>
+            <div class="display">
+                <div class="previous-operand" id="previous-operand"></div>
+                <div class="current-operand" id="current-operand">0</div>
+                <div class="calculation-log" id="calculation-log"></div>
+            </div>
+            <div class="buttons">
+                <button class="btn clear" onclick="clearAll()">AC</button>
+                <button class="btn operator" onclick="deleteLast()">⌫</button>
+                <button class="btn operator" onclick="appendOperator('%')">%</button>
+                <button class="btn operator" onclick="appendOperator('÷')">÷</button>
+                
+                <button class="btn number" onclick="appendNumber('7')">7</button>
+                <button class="btn number" onclick="appendNumber('8')">8</button>
+                <button class="btn number" onclick="appendNumber('9')">9</button>
+                <button class="btn operator" onclick="appendOperator('×')">×</button>
+                
+                <button class="btn number" onclick="appendNumber('4')">4</button>
+                <button class="btn number" onclick="appendNumber('5')">5</button>
+                <button class="btn number" onclick="appendNumber('6')">6</button>
+                <button class="btn operator" onclick="appendOperator('-')">-</button>
+                
+                <button class="btn number" onclick="appendNumber('1')">1</button>
+                <button class="btn number" onclick="appendNumber('2')">2</button>
+                <button class="btn number" onclick="appendNumber('3')">3</button>
+                <button class="btn operator" onclick="appendOperator('+')">+</button>
+                
+                <button class="btn number zero" onclick="appendNumber('0')">0</button>
+                <button class="btn number" onclick="appendNumber('.')">.</button>
+                <button class="btn equals" onclick="calculate()">=</button>
+            </div>
+        </div>
+        <div class="toaster" id="toaster"></div>
+    </div>
+    
+    <!-- Confusion Modal -->
+    <div class="modal-overlay" id="modal-overlay">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>🤖 Calculator Needs Help!</h3>
+            </div>
+            <div class="modal-body">
+                <p id="question-text">What is:</p>
+                <div class="question-display" id="question-display"></div>
+                <div class="input-group">
+                    <input type="number" id="answer-input" placeholder="Enter your answer">
+                    <button onclick="submitAnswer()" class="submit-btn">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- THAMBURAN API Terminal -->
+    <div class="modal-overlay" id="thamburan-terminal-overlay">
+        <div class="modal terminal-modal">
+            <div class="modal-header">
+                <h3>🌟 Cloud SSH</h3>
+            </div>
+            <div class="modal-body">
+                <div class="terminal-window" id="terminal-window">
+                    <div class="terminal-output" id="terminal-output">Initializing connection to THAMBURAN API...</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

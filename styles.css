@@ -1,0 +1,337 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: #f0f0f0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.calculator {
+    background: #333;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    width: 450px;
+}
+
+.progress-container {
+    margin-bottom: 20px;
+    background: #555;
+    border-radius: 8px;
+    height: 12px;
+    overflow: hidden;
+    display: none;
+}
+
+.progress-bar {
+    height: 100%;
+    background: #4CAF50;
+    width: 0%;
+    transition: width 0.5s ease;
+    border-radius: 8px;
+}
+
+.toaster {
+    position: fixed;
+    top: 30px;
+    right: 30px;
+    background: #4CAF50;
+    color: white;
+    padding: 18px 30px;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 18px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: 1000;
+}
+
+.display {
+    background: #222;
+    border-radius: 8px;
+    padding: 30px;
+    margin-bottom: 30px;
+    text-align: right;
+    min-height: 180px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.previous-operand {
+    color: #aaa;
+    font-size: 22px;
+    margin-bottom: 8px;
+    min-height: 28px;
+}
+
+.current-operand {
+    color: white;
+    font-size: 48px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+.calculation-log {
+    color: #4CAF50;
+    font-size: 18px;
+    font-family: 'Courier New', monospace;
+    max-height: 120px;
+    overflow-y: auto;
+    text-align: left;
+    background: #1a1a1a;
+    padding: 15px;
+    border-radius: 5px;
+    white-space: pre-wrap;
+    line-height: 1.5;
+    scroll-behavior: smooth;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+}
+
+.btn {
+    border: none;
+    border-radius: 8px;
+    font-size: 28px;
+    font-weight: bold;
+    padding: 25px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background: #555;
+    color: white;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+.number {
+    background: #666;
+}
+
+.operator {
+    background: #ff9500;
+}
+
+.equals {
+    background: #4CAF50;
+    grid-column: span 2;
+}
+
+.clear {
+    background: #ff4444;
+}
+
+.zero {
+    grid-column: span 2;
+}
+
+/* Animation for calculation process */
+.calculating {
+    animation: pulse 0.5s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+/* Scrollbar styling for calculation log */
+.calculation-log::-webkit-scrollbar {
+    width: 8px;
+}
+
+.calculation-log::-webkit-scrollbar-track {
+    background: #1a1a1a;
+    border-radius: 4px;
+}
+
+.calculation-log::-webkit-scrollbar-thumb {
+    background: #4CAF50;
+    border-radius: 4px;
+}
+
+.calculation-log::-webkit-scrollbar-thumb:hover {
+    background: #45a049;
+}
+
+/* Modal Styles */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+.modal {
+    background: white;
+    border-radius: 15px;
+    padding: 35px;
+    width: 450px;
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.3);
+}
+
+.modal-header h3 {
+    color: #333;
+    margin: 0 0 20px 0;
+    font-size: 26px;
+    text-align: center;
+}
+
+.modal-body p {
+    color: #666;
+    margin-bottom: 20px;
+    font-size: 18px;
+}
+
+.question-display {
+    background: #f5f5f5;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 32px;
+    font-weight: bold;
+    color: #333;
+}
+
+.input-group {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+#answer-input {
+    flex: 1;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: white;
+    color: #333;
+    font-size: 18px;
+    outline: none;
+}
+
+#answer-input::placeholder {
+    color: #999;
+}
+
+.submit-btn {
+    padding: 15px 20px;
+    background: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.submit-btn:hover {
+    background: #45a049;
+    transform: translateY(-2px);
+}
+
+/* THAMBURAN API Terminal Styles */
+.terminal-modal {
+    width: 800px;
+    background: #1a1a1a;
+    border: 2px solid #4CAF50;
+    border-radius: 12px;
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.5);
+}
+
+.terminal-window {
+    background: #000;
+    border-radius: 8px;
+    padding: 25px;
+    height: 500px;
+    overflow-y: auto;
+    font-family: 'Courier New', monospace;
+    color: #4CAF50;
+    font-size: 18px;
+    line-height: 1.8;
+}
+
+.terminal-output {
+    white-space: pre-wrap;
+    padding: 15px;
+}
+
+.terminal-window::-webkit-scrollbar {
+    width: 8px;
+}
+
+.terminal-window::-webkit-scrollbar-track {
+    background: #000;
+    border-radius: 4px;
+}
+
+.terminal-window::-webkit-scrollbar-thumb {
+    background: #4CAF50;
+    border-radius: 4px;
+}
+
+.terminal-window::-webkit-scrollbar-thumb:hover {
+    background: #45a049;
+}
+
+.thamburan-online-toaster {
+    background: #4CAF50;
+    color: white;
+    font-weight: bold;
+    font-size: 22px;
+    padding: 18px 30px;
+    border-radius: 8px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    animation: pulse 1.5s infinite;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    pointer-events: none;
+}
+
+@keyframes pulse {
+    0% { transform: translate(-50%, -50%) scale(1); }
+    50% { transform: translate(-50%, -50%) scale(1.05); }
+    100% { transform: translate(-50%, -50%) scale(1); }
+}
+
