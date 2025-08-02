@@ -2,15 +2,14 @@
 # Useless Calculator 🎯 
 
 ## Basic Details 
-**Team Name:** Calculator Chaos
+**Team Name:** RoShamBo
 
 ## Team Members 
-- **Team Lead:** Jane Doe - MIT 
-- **Member 2:** John Smith - Stanford 
-- **Member 3:** Alex Johnson - CalTech 
+- **Team Lead:** Amin Mohamed
+- **Member 2:** Amin Mohamed
 
 ## Project Description 
-A deliberately over-engineered calculator that makes simple calculations unnecessarily complex and entertaining. It performs basic math operations with dramatic flair and unexpected twists.
+this is simply just a usless calculator that is soo slow and make hilarious calculations but will give the correct answer 
 
 ## The Problem (that doesn't exist) 
 Regular calculators are too efficient and boring. They just give you the answer without any drama or entertainment, making mathematics a dull experience.
@@ -62,8 +61,4 @@ For 3-digit calculations, the calculator connects to a fictional "THAMBURAN API"
 This diagram shows the unnecessarily complex workflow of a simple calculation, including all the pointless detours and delays.
 
 ## Team Contributions 
-**Jane Doe:** Designed the chaotic calculation algorithms and implemented the fake crash screens.
-
-**John Smith:** Created the THAMBURAN API terminal simulation and the progress bar animations.
-
-**Alex Johnson:** Implemented the keyboard input functionality and designed the user interface.
+I Made it My Self No Contributions
